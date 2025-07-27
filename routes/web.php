@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -30,11 +31,21 @@ Route::prefix('services')->group(function () {
 // Kategoriler
 Route::get('/category/{slug}', [ServiceController::class, 'category'])->name('category.show');
 
-// Auth routes (şimdilik basit)
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+// Rezervasyonlar (Giriş yapmış kullanıcılar için)
+Route::middleware('auth')->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/services/{service}/book', [BookingController::class, 'create'])->name('bookings.create');
+    Route::post('/services/{service}/book', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+    Route::patch('/bookings/{booking}/accept', [BookingController::class, 'accept'])->name('bookings.accept');
+    Route::patch('/bookings/{booking}/reject', [BookingController::class, 'reject'])->name('bookings.reject');
+    Route::patch('/bookings/{booking}/complete', [BookingController::class, 'complete'])->name('bookings.complete');
+    Route::patch('/bookings/{booking}/cancel', [BookingController::class, 'cancel'])->name('bookings.cancel');
+});
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+// Auth routes
+Auth::routes();
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

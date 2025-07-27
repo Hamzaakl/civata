@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>@yield('title', 'Civata - Ev Hizmetleri Platformu')</title>
     
     <!-- Bootstrap CSS -->
@@ -73,7 +75,7 @@
         }
     </style>
     
-    @yield('styles')
+    @stack('styles')
 </head>
 <body>
     <!-- Navigation -->
@@ -98,16 +100,54 @@
                 </ul>
                 
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Giriş Yap</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary text-white ms-2" href="{{ route('register') }}">Kayıt Ol</a>
-                    </li>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Giriş Yap</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary text-white ms-2" href="{{ route('register') }}">Kayıt Ol</a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('bookings.index') }}">
+                                    <i class="fas fa-calendar-check"></i> Rezervasyonlarım
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Alert Messages -->
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
 
     <!-- Main Content -->
     <main>
@@ -147,4 +187,4 @@
     
     @yield('scripts')
 </body>
-</html> 
+</html>
