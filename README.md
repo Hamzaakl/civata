@@ -1,64 +1,220 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 🔧 Civata - Ev Hizmetleri Platformu
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Civata**, ev hizmetleri için kapsamlı bir platform olarak tasarlanmıştır. Kamera montajından tesisat tamire, temizlikten teknik servise kadar tüm ev hizmetlerinde müşteriler ve hizmet sağlayıcıları bir araya getiren güvenilir bir çözümdür.
 
-## About Laravel
+## 🚀 Özellikler
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 👥 Kullanıcı Sistemi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Üç tip kullanıcı**: Müşteri, Hizmet Sağlayıcı, Admin
+- Kullanıcı profilleri (telefon, adres, şehir, bio, profil fotoğrafı)
+- Doğrulama sistemi
+- Puan ve değerlendirme sistemi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏷️ Hizmet Kategorileri
 
-## Learning Laravel
+- **Kamera Montaj** - Güvenlik kamerası kurulum ve montaj
+- **Elektrik Tesisatı** - Elektrik arıza, priz montaj ve elektrik işleri
+- **Su Tesisatı** - Su kaçağı, tesisat arıza ve su tesisatı işleri
+- **Klima Montaj** - Klima kurulum, bakım ve tamir
+- **Beyaz Eşya Tamiri** - Çamaşır makinesi, bulaşık makinesi, buzdolabı tamiri
+- **Bilgisayar Tamiri** - Bilgisayar, laptop tamir ve teknik destek
+- **Televizyon Tamiri** - LED, LCD, OLED televizyon tamir
+- **Boyacı** - İç ve dış cephe boyama işleri
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛠️ Sistem Özellikleri
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Hizmet İlanları**: Hizmet sağlayıcıları kendi hizmetlerini yayınlayabilir
+- **Arama ve Filtreleme**: Kategori, şehir ve anahtar kelime ile arama
+- **Rezervasyon Sistemi**: Müşteriler hizmet sağlayıcılardan randevu alabilir
+- **Değerlendirme Sistemi**: 5 yıldızlı puan ve yorum sistemi
+- **Mesajlaşma**: Kullanıcılar arası güvenli iletişim
+- **Fiyat Seçenekleri**: Sabit fiyat, saatlik ücret veya pazarlıklı
 
-## Laravel Sponsors
+## 🏗️ Teknik Yapı
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Backend
 
-### Premium Partners
+- **Framework**: Laravel 8
+- **Veritabanı**: MySQL
+- **Authentication**: Laravel Sanctum
+- **ORM**: Eloquent
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Frontend
 
-## Contributing
+- **Template Engine**: Blade
+- **CSS Framework**: Bootstrap 5
+- **Icons**: Font Awesome 6
+- **Responsive Design**: Mobile-first approach
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📊 Veritabanı Yapısı
 
-## Code of Conduct
+### Tablolar
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **users** - Kullanıcı bilgileri ve roller
+2. **service_categories** - Hizmet kategorileri
+3. **services** - Hizmet ilanları
+4. **bookings** - Rezervasyonlar
+5. **reviews** - Değerlendirmeler ve yorumlar
+6. **messages** - Kullanıcı mesajları
 
-## Security Vulnerabilities
+### Temel İlişkiler
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+User (1:N) → Services
+User (1:N) → Bookings (Customer)
+User (1:N) → Bookings (Provider)
+Service (1:N) → Bookings
+Booking (1:N) → Reviews
+User (1:N) → Messages (Sender/Recipient)
+```
 
-## License
+## 🛠️ Kurulum
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Gereksinimler
+
+- PHP >= 7.3
+- Composer
+- MySQL
+- Node.js (opsiyonel, frontend geliştirme için)
+
+### Kurulum Adımları
+
+1. **Projeyi klonlayın**
+
+   ```bash
+   git clone <repository-url>
+   cd civata
+   ```
+
+2. **Bağımlılıkları yükleyin**
+
+   ```bash
+   composer install
+   ```
+
+3. **Ortam dosyasını hazırlayın**
+
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Veritabanı ayarlarını yapın**
+   `.env` dosyasında veritabanı bilgilerini güncelleyin:
+
+   ```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=civata
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
+
+5. **Veritabanını oluşturun ve migrationları çalıştırın**
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Örnek verileri yükleyin**
+
+   ```bash
+   php artisan db:seed
+   ```
+
+7. **Sunucuyu başlatın**
+   ```bash
+   php artisan serve
+   ```
+
+Proje `http://localhost:8000` adresinde çalışacaktır.
+
+## 👤 Örnek Kullanıcılar
+
+### Admin
+
+- **Email**: admin@civata.com
+- **Şifre**: password
+
+### Hizmet Sağlayıcıları
+
+- **Ahmet Kaya (Elektrikçi)**: ahmet@example.com / password
+- **Mehmet Öz (Tesisatçı)**: mehmet@example.com / password
+- **Ali Yılmaz (Kamera Uzmanı)**: ali@example.com / password
+- **Fatma Demir (Temizlik)**: fatma@example.com / password
+
+### Müşteriler
+
+- **Zeynep Özkan**: zeynep@example.com / password
+- **Can Demir**: can@example.com / password
+
+## 📱 Sayfa Yapısı
+
+### Ana Sayfa (`/`)
+
+- Hero bölümü ve arama formu
+- Hizmet kategorileri
+- Öne çıkan hizmetler
+- En iyi hizmet sağlayıcılar
+- "Nasıl çalışır?" bölümü
+
+### Hizmetler (`/services`)
+
+- Tüm hizmetlerin listelenmesi
+- Arama ve filtreleme özellikleri
+- Sayfalama
+
+### Hizmet Detayı (`/services/{id}`)
+
+- Hizmet detay sayfası
+- Hizmet sağlayıcı bilgileri
+- Benzer hizmetler
+
+### Kategori Sayfası (`/category/{slug}`)
+
+- Kategoriye özel hizmet listesi
+
+## 🎨 Tasarım Özellikleri
+
+- **Modern ve temiz arayüz**
+- **Responsive tasarım** (mobil uyumlu)
+- **Gradient renkler** ve **hover efektleri**
+- **Card-based layout**
+- **Puan gösterimi** (yıldız sistemi)
+- **İkon tabanlı kategoriler**
+
+## 🔄 Geliştirilmesi Planlanan Özellikler
+
+- [ ] Kullanıcı kimlik doğrulama sistemi
+- [ ] Hizmet sağlayıcı paneli
+- [ ] Rezervasyon yönetimi
+- [ ] Mesajlaşma sistemi
+- [ ] Ödeme entegrasyonu
+- [ ] Bildirim sistemi
+- [ ] Mobil uygulama API'leri
+- [ ] Gelişmiş arama filtreleri
+- [ ] Harita entegrasyonu
+- [ ] Dosya yükleme sistemi
+
+## 🤝 Katkıda Bulunma
+
+1. Bu repoyu fork edin
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
+4. Branch'inizi push edin (`git push origin feature/AmazingFeature`)
+5. Pull Request oluşturun
+
+## 📄 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
+
+## 📞 İletişim
+
+- **Email**: info@civata.com
+- **Telefon**: 0555 123 4567
+
+---
+
+**Not**: Bu proje aktif geliştirme aşamasındadır. Yeni özellikler düzenli olarak eklenmektedir.

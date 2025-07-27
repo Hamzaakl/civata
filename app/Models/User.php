@@ -21,6 +21,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'user_type',
+        'address',
+        'city',
+        'bio',
+        'profile_photo',
+        'is_verified',
     ];
 
     /**
@@ -40,5 +47,59 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_verified' => 'boolean',
+        'rating' => 'decimal:2',
     ];
+
+    // İlişkiler
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function customerBookings()
+    {
+        return $this->hasMany(Booking::class, 'customer_id');
+    }
+
+    public function providerBookings()
+    {
+        return $this->hasMany(Booking::class, 'provider_id');
+    }
+
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'recipient_id');
+    }
+
+    public function givenReviews()
+    {
+        return $this->hasMany(Review::class, 'reviewer_id');
+    }
+
+    public function receivedReviews()
+    {
+        return $this->hasMany(Review::class, 'reviewee_id');
+    }
+
+    // Yardımcı metodlar
+    public function isServiceProvider()
+    {
+        return $this->user_type === 'service_provider';
+    }
+
+    public function isCustomer()
+    {
+        return $this->user_type === 'customer';
+    }
+
+    public function isAdmin()
+    {
+        return $this->user_type === 'admin';
+    }
 }
