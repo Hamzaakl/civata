@@ -206,15 +206,4 @@ Proje `http://localhost:8000` adresinde çalışacaktır.
 4. Branch'inizi push edin (`git push origin feature/AmazingFeature`)
 5. Pull Request oluşturun
 
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasına bakınız.
-
-## 📞 İletişim
-
-- **Email**: info@civata.com
-- **Telefon**: 0555 123 4567
-
----
-
 **Not**: Bu proje aktif geliştirme aşamasındadır. Yeni özellikler düzenli olarak eklenmektedir.
