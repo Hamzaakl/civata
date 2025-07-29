@@ -89,7 +89,14 @@
                         {{ substr($service->user->name, 0, 1) }}
                     </div>
                     
-                    <h5>{{ $service->user->name }}</h5>
+                    <h5>
+                    <a href="{{ route('users.show', $service->user) }}" class="text-decoration-none">
+                        {{ $service->user->name }}
+                        @if($service->user->is_verified)
+                            <i class="fas fa-check-circle text-success ms-1" style="font-size: 14px;"></i>
+                        @endif
+                    </a>
+                </h5>
                     
                     <div class="rating-stars mb-3">
                         @for($i = 1; $i <= 5; $i++)
@@ -122,9 +129,26 @@
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
                             <i class="fas fa-envelope"></i> İletişime Geç
                         </button>
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bookingModal">
-                            <i class="fas fa-calendar-check"></i> Randevu Al
-                        </button>
+                        
+                        @auth
+                            @if(Auth::user()->isCustomer())
+                                <a href="{{ route('bookings.create', $service) }}" class="btn btn-success">
+                                    <i class="fas fa-calendar-check"></i> Randevu Al
+                                </a>
+                            @elseif(Auth::id() === $service->user_id)
+                                <button class="btn btn-secondary" disabled>
+                                    <i class="fas fa-info-circle"></i> Bu sizin hizmetiniz
+                                </button>
+                            @else
+                                <button class="btn btn-secondary" disabled>
+                                    <i class="fas fa-ban"></i> Sadece müşteriler randevu alabilir
+                                </button>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-success">
+                                <i class="fas fa-calendar-check"></i> Randevu Al (Giriş Gerekli)
+                            </a>
+                        @endauth
                     </div>
                 </div>
             </div>

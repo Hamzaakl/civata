@@ -15,18 +15,27 @@ class ServiceCategory extends Model
         'slug',
         'description',
         'icon',
+        'color',
         'is_active',
-        'sort_order',
+        'is_featured',
+        'order_index',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'is_featured' => 'boolean',
+        'order_index' => 'integer',
     ];
 
     // İlişkiler
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasManyThrough(Booking::class, Service::class);
     }
 
     // Slug otomatik oluşturma
@@ -49,6 +58,11 @@ class ServiceCategory extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('sort_order')->orderBy('name');
+        return $query->orderBy('order_index')->orderBy('name');
+    }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', true);
     }
 }

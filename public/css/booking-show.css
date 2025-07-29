@@ -1,0 +1,247 @@
+/* =====================
+   BOOKING SHOW STYLES
+   ===================== */
+
+.booking-detail-wrapper {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: calc(100vh - 120px);
+}
+
+.booking-title {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.booking-header {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+/* Status Badges */
+.booking-status {
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pending {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ff8c00;
+  border: 2px solid rgba(255, 193, 7, 0.3);
+}
+
+.status-accepted {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+  border: 2px solid rgba(40, 167, 69, 0.3);
+}
+
+.status-rejected {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+  border: 2px solid rgba(220, 53, 69, 0.3);
+}
+
+.status-completed {
+  background: rgba(102, 126, 234, 0.2);
+  color: #667eea;
+  border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.status-cancelled {
+  background: rgba(108, 117, 125, 0.2);
+  color: #6c757d;
+  border: 2px solid rgba(108, 117, 125, 0.3);
+}
+
+/* Info Cards */
+.booking-info-card,
+.parties-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  height: fit-content;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+.info-group {
+  margin-bottom: 20px;
+}
+
+.info-group label {
+  font-weight: 600;
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.info-value {
+  color: #2c3e50;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Party Info */
+.party-info {
+  margin-bottom: 20px;
+}
+
+.party-label {
+  font-weight: 600;
+  color: #6c757d;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.party-details {
+  display: flex;
+  align-items: center;
+}
+
+.party-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e9ecef;
+  margin-right: 15px;
+}
+
+.contact-info {
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.rating {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* Action Section */
+.action-section {
+  margin-top: 30px;
+}
+
+.action-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.action-card .form-control {
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.action-card .form-control:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15) !important;
+}
+
+.action-card .form-label {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border: none;
+}
+
+.btn-success:hover {
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+  border: none;
+}
+
+.btn-danger:hover {
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, #ffc107 0%, #ff8c00 100%);
+  border: none;
+  color: white;
+}
+
+.btn-warning:hover {
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-header {
+    padding: 20px;
+  }
+
+  .booking-info-card,
+  .parties-card,
+  .action-card {
+    padding: 20px;
+  }
+
+  .booking-title {
+    font-size: 1.5rem;
+  }
+
+  .party-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .d-flex.justify-content-between.align-items-center {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .booking-status {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+}

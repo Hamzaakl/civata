@@ -97,6 +97,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('services.index') }}">Hizmetler</a>
                     </li>
+                    
+                                                @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('bookings.index') }}">
+                                    @if(Auth::user()->isServiceProvider())
+                                        Gelen Rezervasyonlar
+                                    @else
+                                        Rezervasyonlarım
+                                    @endif
+                                </a>
+                            </li>
+                            @if(Auth::user()->isServiceProvider())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('provider.dashboard') }}">
+                                        <i class="fas fa-tachometer-alt me-1"></i>
+                                        Hizmet Sağlayıcı Paneli
+                                    </a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->isAdmin())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                                        <i class="fas fa-cog me-1"></i>
+                                        Admin Paneli
+                                    </a>
+                                </li>
+                            @endif
+                            @endauth
                 </ul>
                 
                 <ul class="navbar-nav">
@@ -109,18 +137,62 @@
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                                @if(Auth::user()->profile_photo)
+                                    <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" 
+                                         alt="{{ Auth::user()->name }}" 
+                                         class="rounded-circle me-2" 
+                                         style="width: 32px; height: 32px; object-fit: cover;">
+                                @else
+                                    <div class="bg-secondary rounded-circle me-2 d-flex align-items-center justify-content-center" 
+                                         style="width: 32px; height: 32px;">
+                                        <i class="fas fa-user text-white" style="font-size: 14px;"></i>
+                                    </div>
+                                @endif
+                                {{ Auth::user()->name }}
+                                @if(Auth::user()->is_verified)
+                                    <i class="fas fa-check-circle text-success ms-1" style="font-size: 12px;"></i>
+                                @endif
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('profile.show') }}">
+                                    <i class="fas fa-user me-2"></i> Profilim
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                    <i class="fas fa-edit me-2"></i> Profil Düzenle
+                                </a></li>
+                                @if(Auth::user()->isServiceProvider())
+                                    <li><a class="dropdown-item" href="{{ route('provider.dashboard') }}">
+                                        <i class="fas fa-tachometer-alt me-2"></i> Hizmet Sağlayıcı Paneli
+                                    </a></li>
+                                @endif
+                                @if(Auth::user()->isAdmin())
+                                    <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                        <i class="fas fa-cog me-2"></i> Admin Paneli
+                                    </a></li>
+                                @endif
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{{ route('bookings.index') }}">
-                                    <i class="fas fa-calendar-check"></i> Rezervasyonlarım
+                                    <i class="fas fa-calendar-check me-2"></i> 
+                                    @if(Auth::user()->isServiceProvider())
+                                        Gelen Rezervasyonlar
+                                    @else
+                                        Rezervasyonlarım
+                                    @endif
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ route('reviews.index') }}">
+                                    <i class="fas fa-star me-2"></i> 
+                                    @if(Auth::user()->isServiceProvider())
+                                        Aldığım Değerlendirmeler
+                                    @else
+                                        Değerlendirmelerim
+                                    @endif
                                 </a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                                        <i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

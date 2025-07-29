@@ -268,6 +268,38 @@
                     </div>
                 @endif
 
+                @if($booking->status === 'completed' && Auth::id() === $booking->customer_id)
+                    <div class="action-section">
+                        <div class="action-card">
+                            @php
+                                $existingReview = App\Models\Review::where('booking_id', $booking->id)
+                                                                  ->where('reviewer_id', Auth::id())
+                                                                  ->first();
+                            @endphp
+                            
+                            @if($existingReview)
+                                <div class="alert alert-success">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    Bu hizmet için değerlendirmenizi yapmışsınız!
+                                </div>
+                                <a href="{{ route('reviews.show', $existingReview) }}" class="btn btn-outline-primary">
+                                    <i class="fas fa-star me-1"></i>
+                                    Değerlendirmenizi Görüntüle
+                                </a>
+                            @else
+                                <div class="mb-3">
+                                    <h6><i class="fas fa-star text-warning me-2"></i>Hizmet Değerlendirmesi</h6>
+                                    <p class="text-muted mb-3">Aldığınız hizmet tamamlandı. Deneyiminizi paylaşarak diğer kullanıcılara yardımcı olun!</p>
+                                </div>
+                                <a href="{{ route('reviews.create', $booking) }}" class="btn btn-warning">
+                                    <i class="fas fa-star me-1"></i>
+                                    Değerlendirme Yap
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+
                 @if(in_array($booking->status, ['pending', 'accepted']) && Auth::id() === $booking->customer_id)
                     <div class="action-section">
                         <div class="action-card">
