@@ -70,21 +70,9 @@ resources/css/                    # Kaynak CSS dosyaları
 ├── provider-services.css        # Hizmet yönetimi stilleri
 └── admin-dashboard.css          # Admin panel dashboard stilleri
 
-public/css/                      # Sunulan CSS dosyaları
+public/css/                      
 ├── app.css                      # Bootstrap + Global stiller
-├── auth-login.css               # Compile edilmiş login CSS
-├── auth-register.css            # Compile edilmiş register CSS
-├── auth-forgot-password.css     # Compile edilmiş forgot password CSS
-├── booking-create.css           # Compile edilmiş booking create CSS
-├── booking-show.css             # Compile edilmiş booking show CSS
-├── booking-index.css            # Compile edilmiş booking index CSS
-├── profile-show.css             # Compile edilmiş profile show CSS
-├── profile-edit.css             # Compile edilmiş profile edit CSS
-├── review-create.css            # Compile edilmiş review create CSS
-├── review-show.css              # Compile edilmiş review show CSS
-├── provider-dashboard.css       # Compile edilmiş provider dashboard CSS
-├── provider-services.css        # Compile edilmiş provider services CSS
-└── admin-dashboard.css          # Compile edilmiş admin dashboard CSS
+
 ```
 
 ### 📱 Sayfa Yapısı
@@ -292,21 +280,6 @@ Proje `http://localhost:8000` adresinde çalışacaktır.
 - [ ] Harita entegrasyonu
 - [ ] Dosya yükleme sistemi
 
-## 🚀 Performans Özellikleri
-
-### CSS Optimizasyonu
-
-- **Modüler Yükleme**: Her sayfa sadece kendi CSS'ini yükler
-- **Küçük Dosya Boyutları**: Auth CSS'leri 1.6-2.2KB arası
-- **Cache Friendly**: Asset versioning ile cache management
-- **Development Workflow**: npm run dev/watch/production
-
-### Database Optimizasyonu
-
-- **Eloquent Relations**: Efficient data fetching
-- **Database Indexing**: Primary ve foreign key indexleri
-- **Pagination**: Büyük veri setleri için sayfalama
-- **Seeded Data**: Test için hazır örnek veriler
 
 ## 🤝 Katkıda Bulunma
 
@@ -317,15 +290,6 @@ Proje `http://localhost:8000` adresinde çalışacaktır.
 5. Pull Request oluşturun
 
 ## 📝 Geliştirici Notları
-
-### CSS Geliştirme
-
-```bash
-# Yeni sayfa CSS'i oluşturmak için:
-1. resources/css/yeni-sayfa.css oluştur
-2. public/css/yeni-sayfa.css kopyala
-3. Blade'de @push('styles') ile include et
-```
 
 ### Database Değişiklikleri
 
